@@ -83,11 +83,11 @@ Multitool имеет доступ к файлу и может прочитать
 
 Файл все еще будет доступен в локальной директории ноды (`/tmp/pv-data/data.log`), потому что мы использовали hostPath, что означает, что данные хранятся на диске ноды, и удаление PV не влияет на сам файл. В случае если в манифесте PV политика persistentVolumeReclaimPolicy будет установлена в Recycle, то файл будет удален.
 
-6. Ссылка на манифест - [Deployment]()
+6. Ссылка на манифест - [Deployment](https://github.com/PatKolzin/kuber-2.2/blob/main/src/deployment.yaml)
 
-   Ссылка на манифест - [PV]()
+   Ссылка на манифест - [PV](https://github.com/PatKolzin/kuber-2.2/blob/main/src/pv.yaml)
 
-   Ссылка на манифест - [PVC]()
+   Ссылка на манифест - [PVC](https://github.com/PatKolzin/kuber-2.2/blob/main/src/pvc.yaml)
 
 ------
 
@@ -126,6 +126,6 @@ Multitool имеет доступ к файлу и может прочитать
 
 Это говорит о том, что NFS работает и из пода файл доступен для чтения и записи.
 
-4. Ссылка на манифест [Deployment-PVC]()
+4. Ссылка на манифест [Deployment-PVC](https://github.com/PatKolzin/kuber-2.2/blob/main/src/deployment-multitool.yaml)
 
-   Ссылка на манифест [SC]()
+   Ссылка на манифест [SC](https://github.com/PatKolzin/kuber-2.2/blob/main/src/sc.yaml)
