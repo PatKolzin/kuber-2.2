@@ -93,10 +93,39 @@ Multitool имеет доступ к файлу и может прочитать
 
 ### Выполнение задания 2
 
+Создание Deployment приложения, которое может хранить файлы на NFS с динамическим созданием PV.
 
+1. Устанавливаю и настраиваю NFS-сервер на ноде с MicroK8S:
+
+![image](https://github.com/user-attachments/assets/6f77d295-f81e-4e73-9704-45023fd9a73e)
+![image](https://github.com/user-attachments/assets/b82e43a6-addf-46c5-9aca-f1fff8287c12)
+
+2. Пишу манифест Deployment-PVC и манифест SC и применяю их:
+
+![image](https://github.com/user-attachments/assets/c7b492f9-81a8-4707-a2f6-4661a4a4627c)
+
+После чего под и PVC переходят из статуса - pending в статус - bound.
+
+![image](https://github.com/user-attachments/assets/fe3ea2d3-01c0-449a-8dc5-9b083832d56e)
+
+Проверяю PV, убеждаюсь, что он создан автоматически:
+
+![image](https://github.com/user-attachments/assets/eea6cd26-d04c-4650-ad6f-85cf0287ead4)
+
+3. Проверю возможность чтения и записи файла изнутри пода. Для этого войду в оболочку контейнера пода и создам файл:
+
+![image](https://github.com/user-attachments/assets/314735bf-5e87-492c-b7f2-e7882b5443bc)
+
+Через `describe pv` проверяем, по какому пути смонтировалась NFS директория:
+
+![image](https://github.com/user-attachments/assets/2d3208e7-eb32-433d-8d32-f63cc8ca12a1)
+
+Переходим в эту директорию, и видим созданный из контейнера пода файл:
+
+![image](https://github.com/user-attachments/assets/714305bf-2724-451a-90e1-1ab83a7fb368)
 
 Это говорит о том, что NFS работает и из пода файл доступен для чтения и записи.
 
-4. Ссылка на манифест Deployment - https://github.com/DemoniumBlack/fedorchukds-devops-33-42/blob/main/SRC/deployment_nfs.yaml
+4. Ссылка на манифест [Deployment-PVC]()
 
-   Ссылка на манифест PVC - https://github.com/DemoniumBlack/fedorchukds-devops-33-42/blob/main/SRC/pvc_nfs.yaml
+   Ссылка на манифест [SC]()
